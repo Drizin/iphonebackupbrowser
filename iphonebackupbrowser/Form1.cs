@@ -877,6 +877,9 @@ namespace iphonebackupbrowser
                     dest = dest.Replace(@"C_\temp", @"C:\temp");
                     Directory.CreateDirectory(Path.GetDirectoryName(dest));
                     File.Copy(filename, dest, true);
+                    File.SetCreationTime(dest, f.ModificationTime);
+                    File.SetLastWriteTime(dest, f.ModificationTime);
+                    File.SetLastAccessTime(dest, f.ModificationTime);
                 }
             }
 
